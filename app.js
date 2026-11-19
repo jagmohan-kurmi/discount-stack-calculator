@@ -101,6 +101,11 @@ function attachCalculator() {
   const update = () => {
     const values = Object.fromEntries(new FormData(form).entries());
     const output = document.querySelector("#calculation-results");
+    const missing = config.fields.some((field) => field.required && !String(values[field.name] ?? "").trim());
+    if (missing) {
+      output.innerHTML = '<span class="muted">Complete the required fields to see an estimate.</span>';
+      return;
+    }
     try {
       const results = AppLogic.calculate(config.kind, values);
       output.innerHTML = results.map((item) => `<article class="answer-metric"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(formatValue(item.value))}</strong></article>`).join("");
