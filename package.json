@@ -1,0 +1,14 @@
+{
+  "name": "discount-stack-calculator",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Estimate a final price after percentage discount, coupon, and tax.",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check app.js && node --check logic.js && node --check config.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
